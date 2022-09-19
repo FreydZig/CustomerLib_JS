@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "eslint": "eslint src/**/*.js",
-    "prettier": "prettier --check *.js",
+    "prettier": "prettier --check src/**/*.js",
     "test": "jest"
   },
   "author": "",
