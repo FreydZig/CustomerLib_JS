@@ -9,7 +9,7 @@ class AddressValidator {
     countryIsIncorrect: "Country Is Incorrect!",
   };
 
-  static Constraints = {
+  static Rules = {
     addressLineMaxLength: 100,
     addressLine2MaxLength: 100,
     addressType: { Shipping: 1, Billing: 2 },
@@ -24,37 +24,29 @@ class AddressValidator {
 
     if (
       !address.addressLine ||
-      address.addressLine.length > this.Constraints.addressLineMaxLength
+      address.addressLine.length > this.Rules.addressLineMaxLength
     )
       errors.push(this.ErrorMessages.addressLineIsEmptyOrTooLong);
 
-    if (
-      !address.addressLine2 ||
-      address.addressLine2.length > this.Constraints.addressLine2MaxLength
-    )
+    if (address.addressLine2.length > this.Rules.addressLine2MaxLength)
       errors.push(this.ErrorMessages.addressLine2IsEmptyOrTooLong);
 
-    if (
-      !Object.values(this.Constraints.addressType).includes(address.addressType)
-    )
+    if (!Object.values(this.Rules.addressType).includes(address.addressType))
       errors.push(this.ErrorMessages.addressTypeIsIncorrect);
 
-    if (!address.city || address.city.length > this.Constraints.cityMaxLength)
+    if (!address.city || address.city.length > this.Rules.cityMaxLength)
       errors.push(this.ErrorMessages.cityIsEmptyOrTooLong);
 
     if (
       !address.postalCode ||
-      address.postalCode.length > this.Constraints.postalCodeMaxLength
+      address.postalCode.length > this.Rules.postalCodeMaxLength
     )
       errors.push(this.ErrorMessages.postalCodeIsEmptyOrTooLong);
 
-    if (
-      !address.state ||
-      address.state.length > this.Constraints.stateMaxLength
-    )
+    if (!address.state || address.state.length > this.Rules.stateMaxLength)
       errors.push(this.ErrorMessages.stateIsEmptyOrTooLong);
 
-    if (!this.Constraints.countries.includes(address.country))
+    if (!this.Rules.countries.includes(address.country))
       errors.push(this.ErrorMessages.countryIsIncorrect);
 
     return errors;
