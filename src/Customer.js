@@ -1,5 +1,4 @@
-const { Person } = require("Person");
-
+const {Person} = require("./Person");
 class Customer extends Person {
   constructor(
     firstName,
