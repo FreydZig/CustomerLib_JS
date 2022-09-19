@@ -23,10 +23,10 @@ class CustomerValidator {
     if (customer.FirstName.length > this.Rules.firstNameMaxLength)
       errors.push(this.ErrorMessages.firstNameIsTooLong);
 
-    if (customer.LastName.length > this.Rules.lastNameMaxLength)
+    if (!customer.LastName || customer.LastName.length > this.Rules.lastNameMaxLength)
       errors.push(this.ErrorMessages.lastNameIsEmptyOrTooLong);
 
-    if (customer.Address.length < 1)
+    if (customer.Address === null || customer.Address.length < 1)
       errors.push(this.ErrorMessages.addressIsEmpty);
 
     if (!customer.PhoneNumber.match(this.Rules.phoneNumberRegex))
