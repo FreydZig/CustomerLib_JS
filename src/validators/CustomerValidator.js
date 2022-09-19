@@ -26,7 +26,7 @@ class CustomerValidator {
     if (customer.LastName.length > this.Rules.lastNameMaxLength)
       errors.push(this.ErrorMessages.lastNameIsEmptyOrTooLong);
 
-    if (customer.Address.Count < 1)
+    if (customer.Address.length < 1)
       errors.push(this.ErrorMessages.addressIsEmpty);
 
     if (!customer.PhoneNumber.match(this.Rules.phoneNumberRegex))
@@ -35,7 +35,7 @@ class CustomerValidator {
     if (!customer.Email.match(this.Rules.emailRegex))
       errors.push(this.ErrorMessages.emailIsIncorrect);
 
-    if (customer.Notes.Count < 1) errors.push(this.ErrorMessages.notesIsEmpty);
+    if (customer.Notes.length < 1) errors.push(this.ErrorMessages.notesIsEmpty);
 
     if (customer.LastPurchaseDate < this.Rules.lastPurchaseDateMin)
       errors.push(this.ErrorMessages.lastPurchaseDateIsIncorrect);
