@@ -15,4 +15,13 @@ describe('AddressValidator', () => {
         expect(AddressValidator.Validate(address)[6]).toBe("Country Is Incorrect!")
         expect(AddressValidator.Validate(address).length).toBe(7)
     })
+
+    it('Should be able to return else Errors', () => {
+        const addressLine = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        const address = new Address(addressLine, 'addressLine', 'd', '', '1234567', '', 'F')
+
+        expect(AddressValidator.Validate(address)[0]).toBe("Address Line Is Empty Or Too Long!")
+        expect(AddressValidator.Validate(address)[3]).toBe("Postal Code Is Empty Or Too Long!")
+    })
+
 })
